@@ -1,0 +1,43 @@
+{
+    "time": 1737019741,
+    "self_id": 3766543953,
+    "post_type": "meta_event",
+    "meta_event_type": "heartbeat",
+    "status": {
+        "online": true,
+        "good": true
+    },
+    "interval": 30000
+}
+
+
+
+{
+    "self_id": 3766543953,
+    "user_id": 1121053165,
+    "time": 1737020000,
+    "message_id": 1492969790,
+    "message_seq": 1492969790,
+    "real_id": 1492969790,
+    "message_type": "group",
+    "sender": {
+        "user_id": 1121053165,
+        "nickname": "Hello World",
+        "card": "下一个冬天来临之前逃离北京",
+        "role": "admin"
+    },
+    "raw_message": "马上就是了",
+    "font": 14,
+    "sub_type": "normal",
+    "message": [
+        {
+            "type": "text",
+            "data": {
+                "text": "马上就是了"
+            }
+        }
+    ],
+    "message_format": "array",
+    "post_type": "message",
+    "group_id": 920281974
+}

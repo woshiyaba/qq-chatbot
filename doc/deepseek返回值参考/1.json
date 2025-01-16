@@ -1,0 +1,25 @@
+{
+  "id": "cf2417a5-a73b-4015-9432-b5c109bbd717",
+  "object": "chat.completion",
+  "created": 1737019006,
+  "model": "deepseek-chat",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"des\":\"欢迎来到D&D 5E的奇幻世界！我们的冒险开始于一个名为艾尔文的小镇，这里被茂密的森林环绕，四季分明，当前正值春末夏初，天气温暖而湿润。小镇的居民以农业和手工艺为生，镇中心有一座古老的石制喷泉，是居民们聚集交流的地方。今天，你站在喷泉旁，准备开始你的冒险。你的角色拥有以下物品：一把长剑，一套皮甲，一个背包，里面装有10天的干粮，一个水壶，50金币。请告诉我你的角色接下来想做什么。1. {探索小镇} 2. {前往森林} 3. {与镇民交谈}\"}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 964,
+    "completion_tokens": 153,
+    "total_tokens": 1117,
+    "prompt_cache_hit_tokens": 960,
+    "prompt_cache_miss_tokens": 4
+  },
+  "system_fingerprint": "fp_3a5770e1b4"
+}

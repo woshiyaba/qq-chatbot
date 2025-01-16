@@ -1,0 +1,25 @@
+{
+  "id": "bd0f79cb-fdb9-4e5d-bba0-2781964b3bb4",
+  "object": "chat.completion",
+  "created": 1737021421,
+  "model": "deepseek-chat",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"des\":\"你决定往北走。你发现自己正站在一片茂密的森林边缘，阳光透过树叶洒下斑驳的光影。森林深处传来鸟鸣和溪流的声音，空气中弥漫着泥土和树叶的清新气息。你注意到一条小径蜿蜒向北，似乎通向森林的更深处。1. {沿着小径深入森林} 2. {在森林边缘寻找线索} 3. {返回原路，选择其他方向}\"}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 964,
+    "completion_tokens": 99,
+    "total_tokens": 1063,
+    "prompt_cache_hit_tokens": 960,
+    "prompt_cache_miss_tokens": 4
+  },
+  "system_fingerprint": "fp_3a5770e1b4"
+}
