@@ -1,5 +1,6 @@
 package com.swb.ai;
 
+import com.swb.util.FileUtils;
 import com.swb.util.HttpClientUtils;
 import com.swb.util.JsonUtils;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import java.util.List;
 public class GeminiUtils {
 
 
-    private static final String API_KEY = "AIzaSyBlYTZbtmTWAIiP_tuk3VbfcHoZCClDOBA";
+    private static String API_KEY = "AIzaSyBlYTZbtmTWAIiP_tuk3VbfcHoZCClDOBA";
     private static final String URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY;
     private static final Logger log = LoggerFactory.getLogger(GeminiUtils.class);
 
@@ -30,6 +31,10 @@ public class GeminiUtils {
             this.role = role;
             this.text = text;
         }
+    }
+
+    public static void init(String apiKeyPath) {
+        API_KEY = FileUtils.readFile(apiKeyPath);
     }
 
     public static String sendMessage(String message) {

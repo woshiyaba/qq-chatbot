@@ -5,8 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @desc:
@@ -38,5 +41,15 @@ public class FileUtils {
             return "";
         }
 
+    }
+
+    public static String readFile(String filePath) {
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get(filePath));
+            return new String(bytes, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            log.error("readFile error", e);
+        }
+        return "";
     }
 }

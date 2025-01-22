@@ -1,5 +1,6 @@
 package com.swb;
 
+import com.swb.ai.GeminiUtils;
 import com.swb.netty.server.NettyServerStart;
 import com.swb.ai.DeepSeekChatUtils;
 
@@ -8,6 +9,11 @@ import com.swb.ai.DeepSeekChatUtils;
 public class Main {
     public static void main(String[] args) {
         new NettyServerStart().start(Integer.parseInt(args[0]));
-        DeepSeekChatUtils.init(args[1] == null ? "system.txt" : args[1]);
+        init(args);
+    }
+
+    private static void init(String[] args) {
+        DeepSeekChatUtils.init(args[1] == null ? "prompt.txt" : args[1], args[2]);
+        GeminiUtils.init(args[3]);
     }
 }

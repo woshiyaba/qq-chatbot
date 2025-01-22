@@ -23,7 +23,7 @@ import java.util.Map;
 public class DeepSeekChatUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(DeepSeekChatUtils.class);
     public static final String API_URL = "https://api.deepseek.com/chat/completions";
-    public static final String API_KEY = "Bearer sk-2a71adc3756849c3bf3070b9da786e53";
+    public static String API_KEY;
 
     public static final ArrayList<Content> CONTEXT = new ArrayList<>();
 
@@ -42,8 +42,9 @@ public class DeepSeekChatUtils {
 
     public static String SYSTEM_CONTENT;
 
-    public static void init(String promptPath) {
+    public static void init(String promptPath, String apiKeyPath) {
         SYSTEM_CONTENT = FileUtils.getFileType(promptPath);
+        API_KEY = FileUtils.readFile(apiKeyPath);
     }
 
     public static synchronized String sendMessage(String message) throws JsonProcessingException {
