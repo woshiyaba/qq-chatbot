@@ -21,8 +21,8 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(65536));
         pipeline.addLast(new ChunkedWriteHandler());
-        // WebSocket处理
-        pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
+        // WebSocket处理ws://101.126.40.216:3001/common-qq-bot
+        pipeline.addLast(new WebSocketServerProtocolHandler("/common-qq-bot"));
         pipeline.addLast(new WebSocketServerHandler());
     }
 }

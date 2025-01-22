@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.swb.netqq.module.BaseMessage;
 import com.swb.netqq.module.Message;
 import com.swb.netqq.module.MessageEvent;
-import com.swb.util.DeepSeekChatUtils;
+import com.swb.ai.DeepSeekChatUtils;
 import com.swb.util.JsonUtils;
 import com.swb.util.MessageUtils;
 import io.netty.buffer.ByteBuf;
@@ -45,7 +45,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
         // 如果是WebSocket握手请求，升级协议
         if ("websocket".equals(req.headers().get(HttpHeaderNames.UPGRADE))) {
             WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(
-                    "ws://localhost:" + "3003" + "/ws", null, false);
+                    "ws://127.0.0.1:3003/common-qq-bot", null, false);
             WebSocketServerHandshaker handshaker = wsFactory.newHandshaker(req);
             if (handshaker == null) {
                 WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
@@ -75,6 +75,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
             String request = ((TextWebSocketFrame) frame).text();
             BaseMessage baseMessage = JsonUtils.fromJson(request, BaseMessage.class);
             String postType = baseMessage.getPost_type();
+            if (postType == null) return;
             switch (postType) {
                 case "message":
                     MessageEvent messageEvent = JsonUtils.fromJson(request, MessageEvent.class);
@@ -88,7 +89,6 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
                                 isAtMe = true;
                             }
                         }
-
                         if (msg.getType().equals("text")) {
                             text = msg.getData().get("text").asText();
                         }
@@ -121,5 +121,11 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
         if (!HttpHeaders.isKeepAlive(req)) {
             future.addListener(ChannelFutureListener.CLOSE);
         }
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+
+        ctx.channel().close();
     }
 }

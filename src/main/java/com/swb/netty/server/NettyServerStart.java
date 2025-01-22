@@ -14,11 +14,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class NettyServerStart {
 
 
-    public void start(){
-        run();
+    public void start(int port){
+        run(port);
     }
 
-    private void run(){
+    private void run(int port){
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -30,8 +30,8 @@ public class NettyServerStart {
                     .childHandler(new WebSocketServerInitializer());
 
             // 绑定端口并启动服务器
-            ChannelFuture future = bootstrap.bind(3003).sync();
-            System.out.println("WebSocket server started at port " + 3002);
+            ChannelFuture future = bootstrap.bind(port).sync();
+            System.out.println("WebSocket server started at port " + port);
 
             // 等待服务器通道关闭
             future.channel().closeFuture().sync();
