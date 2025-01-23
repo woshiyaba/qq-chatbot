@@ -26,16 +26,26 @@
             <artifactId>okhttp</artifactId>
             <version>4.12.0</version>
         </dependency>
+
+        <!-- Log4j2 核心依赖 -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version> <!-- 请根据需要调整版本 -->
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version> <!-- 使用最新版本 -->
         </dependency>
 
+        <!-- Log4j2 API 依赖 -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.5.12</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.20.0</version> <!-- 使用最新版本 -->
+        </dependency>
+
+        <!-- SLF4J 桥接依赖（如果你使用 SLF4J API） -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.20.0</version> <!-- 使用最新版本 -->
         </dependency>
 
         <dependency>
@@ -63,12 +73,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

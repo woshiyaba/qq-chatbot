@@ -1,6 +1,5 @@
 package com.swb.util;
 
-import com.sun.org.apache.bcel.internal.generic.PUSH;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +10,10 @@ import java.net.Proxy;
 /**
  * @desc:
  * @author: cyj
- * @date: 2025/1/16 
+ * @date: 2025/1/16
  **/
 public class HttpClientUtils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientUtils.class);
     private static final OkHttpClient CLIENT = new OkHttpClient();
     private static final OkHttpClient CLIENT_PROXY;
     private static final String PROXY_HOST = "localhost";
@@ -42,7 +42,7 @@ public class HttpClientUtils {
                 .build();
     }
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientUtils.class);
+
 
     public static String sendJsonPost(String url, String key, String json) {
         return sendJsonPost(url, key, json, false);
@@ -68,7 +68,8 @@ public class HttpClientUtils {
         Request.Builder builder = new Request.Builder()
                 .url(url);
         if (key != null) {
-            builder.addHeader("Authorization", key);
+            LOGGER.info("添加头部信息：{}", key);
+            builder.addHeader("Authorization", key.trim());
         }
         OkHttpClient realClient = CLIENT;
         if (isProxy) {

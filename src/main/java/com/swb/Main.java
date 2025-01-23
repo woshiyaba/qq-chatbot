@@ -8,8 +8,8 @@ import com.swb.ai.DeepSeekChatUtils;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        new NettyServerStart().start(Integer.parseInt(args[0]));
         init(args);
+        new NettyServerStart().start(Integer.parseInt(args[0]));
     }
 
     private static void init(String[] args) {

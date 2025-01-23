@@ -92,7 +92,7 @@ public class AuthenticatedProxyExample {
         ArrayList<DeepSeekChatUtils.Content> maps = new ArrayList<>();
 
         maps.add(new DeepSeekChatUtils.Content("user", "开始"));
-        DeepSeekChatUtils.init("prompt_dm.txt");
+//        DeepSeekChatUtils.init("prompt_dm.txt");
         String s = DeepSeekChatUtils.sendMessage(JsonUtils.toJson(maps));
 //        Map<String, String> stringStringMap = JsonUtils.fromJsonToMap("{\"role\":\"assistant\",\"content\":\"{\\\"des\\\":\\\"你决定探索森林。你离开小路，踏入茂密的森林。阳光透过树叶的缝隙，斑驳地照在地面上。你小心翼翼地前进，突然，你听到前方有轻微的沙沙声。你悄悄地靠近，发现是一只小鹿在吃草。就在这时，你注意到不远处有一群哥布林正在设置陷阱。他们似乎没有注意到你的存在。现在，你需要决定你的下一步行动。1. {悄悄绕过哥布林} 2. {尝试与哥布林交涉} 3. {准备战斗}\\\"}\"}", String.class, String.class);
         System.out.println(s);

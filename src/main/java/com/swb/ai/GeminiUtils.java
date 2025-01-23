@@ -19,7 +19,7 @@ public class GeminiUtils {
 
     private static String API_KEY = "AIzaSyBlYTZbtmTWAIiP_tuk3VbfcHoZCClDOBA";
     private static final String URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY;
-    private static final Logger log = LoggerFactory.getLogger(GeminiUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeminiUtils.class);
 
     private static List<Content> CONTEXT = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class GeminiUtils {
                     .get("parts").get(0)
                     .get("text").asText();
         } catch (Exception e) {
-            log.error("解析失败", e);
+            LOGGER.error("解析失败", e);
         }
         return null;
     }

@@ -16,15 +16,18 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 /**
  * @desc:
  * @author: cyj
- * @date: 2025/1/16 
+ * @date: 2025/1/16
  **/
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketServerHandler.class);
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -95,6 +98,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
                     }
                     if (isAtMe) {
                         String msg = DeepSeekChatUtils.sendMessage(text);
+                        LOGGER.info("开始发送消息 {}", msg);
                         ctx.channel().writeAndFlush(
                                 new TextWebSocketFrame(MessageUtils
                                         .createGroupMessage(groupId, msg, "send_group_msg")));
@@ -105,7 +109,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
                     // 处理私聊消息
                     break;
                 default:
-                    System.out.println("Received message: " + request);
+//                    System.out.println("Received message: " + request);
             }
         }
     }
@@ -125,7 +129,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-
+        LOGGER.error("WebSocket server caught exception", cause);
         ctx.channel().close();
     }
 }

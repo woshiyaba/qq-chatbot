@@ -10,15 +10,12 @@ import com.swb.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @desc:
  * @author: cyj
- * @date: 2025/1/16 
+ * @date: 2025/1/16
  **/
 public class DeepSeekChatUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(DeepSeekChatUtils.class);
@@ -45,6 +42,8 @@ public class DeepSeekChatUtils {
     public static void init(String promptPath, String apiKeyPath) {
         SYSTEM_CONTENT = FileUtils.getFileType(promptPath);
         API_KEY = FileUtils.readFile(apiKeyPath);
+        LOGGER.debug("Initializing DeepSeekChatUtils... {}", SYSTEM_CONTENT);
+
     }
 
     public static synchronized String sendMessage(String message) throws JsonProcessingException {

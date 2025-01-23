@@ -18,7 +18,7 @@ import java.nio.file.Paths;
  **/
 public class FileUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(FileUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
     public static String getFileType(String fileName) {
         try (InputStream inputStream = DeepSeekChatUtils.class.getClassLoader().getResourceAsStream(fileName);) {
@@ -37,7 +37,7 @@ public class FileUtils {
 
             return byteArrayOutputStream.toString(StandardCharsets.UTF_8.name());
         } catch (Exception e) {
-            log.error("getFileType error", e);
+            LOGGER.error("getFileType error", e);
             return "";
         }
 
@@ -48,7 +48,7 @@ public class FileUtils {
             byte[] bytes = Files.readAllBytes(Paths.get(filePath));
             return new String(bytes, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            log.error("readFile error", e);
+            LOGGER.error("readFile error", e);
         }
         return "";
     }
